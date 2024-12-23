@@ -1,5 +1,5 @@
 // app/api/claim/route.ts
-import { BGBContract } from "@/api/lib/contractSetup";
+import { BGBContract } from "@/app/api/lib/contractSetup";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
