@@ -1,6 +1,6 @@
 import { Abi } from "viem";
 import { getReadContract, getWriteContract } from "./contractUtils";
-import bgbContractAbi from "../abi/bgbContractAbi.json";
+import bgbContractAbi from "./abi/bgbContractAbi.json";
 const contractAddress = process.env.CONTRACT_ADDRESS as `0x${string}`;
 
 export class BGBContract {
