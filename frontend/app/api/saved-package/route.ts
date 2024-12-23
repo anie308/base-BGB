@@ -19,11 +19,11 @@ export async function POST(req: NextRequest) {
     await connectDB();
 
     // Create new share document
-    const savePackage = await SavePackage.create({ packageId });
+    const savedPackage = await SavePackage.create({ packageId });
 
     return NextResponse.json({
       success: true,
-      savePackageId: savePackage._id,
+      savedPackageId: savedPackage._id,
     });
   } catch (error) {
     console.error("Error creating savePackage:", error);
