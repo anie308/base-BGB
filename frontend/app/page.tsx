@@ -1,6 +1,6 @@
 "use client";
 
-import { ConnectWallet } from "@coinbase/onchainkit/wallet";
+
 import { useState } from "react";
 
 export default function App() {
@@ -37,7 +37,7 @@ export default function App() {
   };
   return (
     <div className="flex flex-col min-h-screen font-sans dark:bg-background dark:text-white bg-white text-black">
-      <ConnectWallet />
+
       <div>
         <h1>Sample to save package</h1>
         <button
