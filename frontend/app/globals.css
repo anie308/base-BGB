@@ -25,3 +25,11 @@ body {
     text-wrap: balance;
   }
 }
+
+.music-control {
+  transition: transform 0.2s;
+}
+
+.music-control:hover {
+  transform: scale(1.1);
+}
