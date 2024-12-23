@@ -1,8 +1,10 @@
+import { MusicControl } from "@/components/MusicControl";
+import Navigation from "@/components/Navigation";
+import VideoBackground from "@/components/VideoBackground";
 import "@coinbase/onchainkit/styles.css";
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
-import { MusicControl } from "@/components/MusicControl";
 
 export const metadata: Metadata = {
   title: process.env.NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME,
@@ -19,7 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-background dark">
         <MusicControl />
-        <Providers>{children}</Providers>
+        <Providers>
+          <VideoBackground videoSrc="/video/background.mp4" >
+            <Navigation />
+            {children}
+          </VideoBackground>
+        </Providers>
+
       </body>
     </html>
   );
