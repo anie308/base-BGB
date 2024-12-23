@@ -33,13 +33,10 @@ function GiftModal() {
     }
 
     return (
-        <Card className="relative bg-black bg-opacity-30 backdrop-blur-lg border border-white/10 rounded-lg shadow-lg w-full max-w-md mx-auto mt-8">
+        <Card className="relative backdrop-filter bg-white/10 bg-opacity-60 backdrop-blur-lg border border-white/10 rounded-lg shadow-lg w-full max-w-md mx-auto mt-8">
             <CardHeader>
                 <div className="flex flex-col items-center">
-                    {/* Logo */}
-                    <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center shadow-md mb-4">
-                        <span className="text-white text-2xl font-bold">Logo</span>
-                    </div>
+                    <Image src="/base_img.png" alt="Base Logo" width={350} height={350} className="w-full" />
 
                 </div>
                 <CardTitle className="text-white ">
