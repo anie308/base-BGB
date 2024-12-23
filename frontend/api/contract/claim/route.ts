@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       {
         success: true,
         message: "Claim initiated successfully",
-        transactionHash: transaction.hash,
+        transactionHash: transaction,
       },
       { status: 200 }
     );

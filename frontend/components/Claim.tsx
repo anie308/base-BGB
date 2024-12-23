@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useAccount } from "wagmi";
 
+//this is where the receiver need to have a wallet address before they are allowed to claim the package
 const Claim = () => {
   const params = useParams();
   const router = useRouter();
