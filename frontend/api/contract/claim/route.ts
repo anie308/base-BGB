@@ -6,11 +6,11 @@ export async function POST(req: NextRequest) {
   try {
     // Parse the request body
     const body = await req.json();
-    const { accountId } = body;
+    const { accountId, packageId } = body;
 
-    if (!accountId) {
+    if (!accountId || !packageId) {
       return NextResponse.json(
-        { error: "accountId is required" },
+        { error: "accountId and packageId are required" },
         { status: 400 }
       );
     }
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const bgbContract = new BGBContract();
 
     // Call claim function
-    const transaction = await bgbContract.claim(accountId);
+    const transaction = await bgbContract.claim(accountId, packageId);
 
     return NextResponse.json(
       {

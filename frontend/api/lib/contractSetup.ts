@@ -20,8 +20,8 @@ export class BGBContract {
     );
   }
 
-  claim(accountId: string) {
-    const args: string[] = [accountId];
+  claim(accountId: string, packageId: string) {
+    const args: string[] = [accountId, packageId];
     return this.writeClient.write.claim(args);
   }
 }
