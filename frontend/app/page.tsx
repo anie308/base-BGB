@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   ConnectWallet,
@@ -6,34 +6,60 @@ import {
   WalletDropdown,
   WalletDropdownLink,
   WalletDropdownDisconnect,
-} from '@coinbase/onchainkit/wallet';
+} from "@coinbase/onchainkit/wallet";
 import {
   Address,
   Avatar,
   Name,
   Identity,
   EthBalance,
-} from '@coinbase/onchainkit/identity';
-import ArrowSvg from './svg/ArrowSvg';
-import ImageSvg from './svg/Image';
-import OnchainkitSvg from './svg/OnchainKit';
+} from "@coinbase/onchainkit/identity";
+import ArrowSvg from "./svg/ArrowSvg";
+import ImageSvg from "./svg/Image";
+import OnchainkitSvg from "./svg/OnchainKit";
 
 const components = [
   {
-    name: 'Transaction',
-    url: 'https://onchainkit.xyz/transaction/transaction',
+    name: "Transaction",
+    url: "https://onchainkit.xyz/transaction/transaction",
   },
-  { name: 'Swap', url: 'https://onchainkit.xyz/swap/swap' },
-  { name: 'Checkout', url: 'https://onchainkit.xyz/checkout/checkout' },
-  { name: 'Wallet', url: 'https://onchainkit.xyz/wallet/wallet' },
-  { name: 'Identity', url: 'https://onchainkit.xyz/identity/identity' },
+  { name: "Swap", url: "https://onchainkit.xyz/swap/swap" },
+  { name: "Checkout", url: "https://onchainkit.xyz/checkout/checkout" },
+  { name: "Wallet", url: "https://onchainkit.xyz/wallet/wallet" },
+  { name: "Identity", url: "https://onchainkit.xyz/identity/identity" },
 ];
 
 const templates = [
-  { name: 'NFT', url: 'https://github.com/coinbase/onchain-app-template' },
-  { name: 'Commerce', url: 'https://github.com/coinbase/onchain-commerce-template'},
-  { name: 'Fund', url: 'https://github.com/fakepixels/fund-component' },
+  { name: "NFT", url: "https://github.com/coinbase/onchain-app-template" },
+  {
+    name: "Commerce",
+    url: "https://github.com/coinbase/onchain-commerce-template",
+  },
+  { name: "Fund", url: "https://github.com/fakepixels/fund-component" },
 ];
+
+const savePackage = async (packageId: string) => {
+  try {
+    const response = await fetch("/api/saved-package", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ packageId }),
+    });
+
+    console.log(response);
+    if (!response.ok) {
+      throw new Error("Failed to save package");
+    }
+
+    const data = await response.json();
+    console.log(data);
+    return data; // This will be your shareable link
+  } catch (error) {
+    console.log("Error saving package:", error);
+  }
+};
 
 export default function App() {
   return (
@@ -80,7 +106,10 @@ export default function App() {
           </div>
           <p className="text-center mb-6">
             Get started by editing
-            <code className="p-1 ml-1 rounded dark:bg-gray-800 bg-gray-200">app/page.tsx</code>.
+            <code className="p-1 ml-1 rounded dark:bg-gray-800 bg-gray-200">
+              app/page.tsx
+            </code>
+            .
           </p>
           <div className="flex flex-col items-center">
             <div className="max-w-2xl w-full">
@@ -119,11 +148,14 @@ export default function App() {
                           rel="noopener noreferrer"
                         >
                           {template.name}
-                          <ArrowSvg/>
+                          <ArrowSvg />
                         </a>
                       </li>
                     ))}
                   </ul>
+                </div>
+                <div className="md:w-1/2 flex flex-col items-center">
+                  <button onClick={() => savePackage("12345")}>Save</button>
                 </div>
               </div>
             </div>
