@@ -1,18 +1,27 @@
-import { createConfig, http } from 'wagmi';
-import { baseSepolia } from 'wagmi/chains';
+import { WAGMI_CHAIN } from '@/constants';
+import { http, cookieStorage, createConfig, createStorage } from 'wagmi';
+// import { baseSepolia } from 'wagmi/chains';
 import { coinbaseWallet } from 'wagmi/connectors';
 
 const wagmiConfig = createConfig({
-    chains: [baseSepolia],
+    chains: [WAGMI_CHAIN],
     connectors: [
         coinbaseWallet({
-            appName: 'onchainkit',
+            appName: 'OnchainKit',
+            preference: 'smartWalletOnly',
+            version: '4',
         }),
     ],
     ssr: true,
+    storage: createStorage({
+        storage: cookieStorage,
+      }),
+    // transports: {
+    //     [WAGMI_CHAIN.id]: http(),
+    // },
     transports: {
-        [baseSepolia.id]: http(),
-    },
+        [WAGMI_CHAIN.id]: http(`https://${WAGMI_CHAIN.id}.rpc.thirdweb.com/${process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID}`),
+      },
 });
 
 export default wagmiConfig;

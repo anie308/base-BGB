@@ -22,6 +22,7 @@
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
+    "thirdweb": "^5.80.0",
     "viem": "^2.21.57",
     "wagmi": "^2.14.4"
   },
